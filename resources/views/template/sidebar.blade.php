@@ -44,7 +44,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link" id="DataJadwal">
+              <a href="{{ url('/karyawan') }}" class="nav-link" id="DataJadwal">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data User</p>
               </a>
