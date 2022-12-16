@@ -20,20 +20,25 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
+            @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Karyawan')
             <li class="nav-item">
               <a href="{{ route('home') }}" class="nav-link" id="Home">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Dashboard</p>
               </a>
             </li>
+            @endif
+            @if (Auth::user()->role == 'Admin')
             <li class="nav-item">
-              <a href="#" class="nav-link" id="AdminHome">
+              <a href="{{ url('/admin/dashboard') }}" class="nav-link" id="AdminHome">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Dashboard Admin</p>
               </a>
             </li>
+            @endif
           </ul>
         </li>
+        @if (Auth::user()->role == 'Admin')
         <li class="nav-item" id="liMasterData">
           <a href="#" class="nav-link" id="MasterData">
             <i class="nav-icon fas fa-th"></i>
@@ -46,11 +51,12 @@
             <li class="nav-item">
               <a href="{{ url('/karyawan') }}" class="nav-link" id="DataJadwal">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Data User</p>
+                <p>Data Karyawan</p>
               </a>
             </li>
           </ul>
         </li>
+        @endif
       </ul>
       
     </nav>

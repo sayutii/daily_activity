@@ -12,7 +12,7 @@
                                     
                                     {{-- <img src="{{ asset('images/logotvri.png') }}" height="50" alt="logo" class="auth-logo logo logo-admin"> --}}
                                     
-                                    <h4 class="mt-3 mb-1 font-weight-semibold text-white font-18">Sistem Informasi Sekolah</h4>   
+                                    <h4 class="mt-3 mb-1 font-weight-semibold text-white font-18">Daily Activity</h4>   
                                     <p class="text-muted  mb-0">Silahkan login atau Register</p>  
                                 </div>
                             </div>

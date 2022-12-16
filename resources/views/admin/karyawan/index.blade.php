@@ -1,7 +1,7 @@
 @extends('template.master')
-@section('heading', 'Data User')
+@section('heading', 'Data Karyawan')
 @section('page')
-  <li class="breadcrumb-item active">Data User</li>
+  <li class="breadcrumb-item active">Data Karyawan</li>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -9,7 +9,7 @@
         <div class="card-header">
             <h3 class="card-title">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">
-                    <i class="nav-icon fas fa-plus-square"></i> &nbsp; Tambah Data User
+                    <i class="nav-icon fas fa-plus-square"></i> &nbsp; Tambah Karyawan
                 </button>
             </h3>
         </div>
@@ -71,19 +71,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="nama_karyawan">Nama*</label>
+                        <label for="nama_karyawan">Nama <span class="text-danger">*</span></label>
                         <input type="text" id="nama_karyawan" name="nama_karyawan" class="form-control @error('nama_karyawan') is-invalid @enderror" placeholder="Masukkan Nama">
                     </div>
                     <div class="form-group">
-                        <label for="tmp_lahir">Tempat Lahir*</label>
+                        <label for="tmp_lahir">Tempat Lahir <span class="text-danger">*</span></label>
                         <input type="text" id="tmp_lahir" name="tmp_lahir" class="form-control @error('tmp_lahir') is-invalid @enderror" placeholder="Tempat Lahir">
                     </div>
                     <div class="form-group">
-                        <label for="tgl_lahir">Tanggal Lahir*</label>
+                        <label for="tgl_lahir">Tanggal Lahir <span class="text-danger">*</span></label>
                         <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror">
                     </div>
                     <div class="form-group">
-                        <label for="foto">File input*</label>
+                        <label for="foto">File input</label>
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" name="foto" class="custom-file-input @error('foto') is-invalid @enderror" id="foto">
@@ -94,11 +94,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="id_card">Nomor Kartu ID*</label>
+                        <label for="id_card">Nomor Kartu ID <span class="text-danger">*</span></label>
                         <input type="text" id="id_card" name="id_card" maxlength="5" onkeypress="return inputAngka(event)" value="{{ $id_card }}" class="form-control @error('id_card') is-invalid @enderror" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="jk">Jenis Kelamin*</label>
+                        <label for="jk">Jenis Kelamin <span class="text-danger">*</span></label>
                         <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
                             <option value="">Pilih Jenis Kelamin</option>
                             <option value="L">Laki-Laki</option>
@@ -106,7 +106,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="no_hp">Nomor Telepon/HP*</label>
+                        <label for="no_hp">Nomor Telepon/HP <span class="text-danger">*</span></label>
                         <input type="text" id="no_hp" name="no_hp" onkeypress="return inputAngka(event)" class="form-control @error('no_hp') is-invalid @enderror" placeholder="No Telepon">
                     </div>
                 </div>
