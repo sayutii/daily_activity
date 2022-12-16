@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::post('/karyawan/create', [KaryawanController::class, 'actionCreate'])->na
 Route::get('/karyawan/edit/{id}', [KaryawanController::class, 'actionFormUpdate'])->name('edit-form');
 Route::patch('/karyawan/update/{id}', [KaryawanController::class, 'actionUpdate'])->name('action-update');
 Route::delete('/karyawan/delete/{id}', [KaryawanController::class, 'actionDelete'])->name('action-delete');
+
+Route::post('/user', [UserController::class, 'actionCreate']);

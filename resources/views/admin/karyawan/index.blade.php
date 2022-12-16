@@ -30,11 +30,11 @@
                     @foreach ($karyawan as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $data->nama_guru }}</td>
+                        <td>{{ $data->nama_karyawan }}</td>
                         <td>{{ $data->id_card }}</td>
                         <td>{{ $data->no_hp }}</td>
                         <td>
-                            <a href="{{ asset($data->foto) }}" data-toggle="lightbox" data-title="Foto {{ $data->nama_guru }}" data-gallery="gallery" data-footer='<a href="" id="linkFotoGuru" class="btn btn-link btn-block btn-light"><i class="nav-icon fas fa-file-upload"></i> &nbsp; Ubah Foto</a>'>
+                            <a href="{{ asset($data->foto) }}" data-toggle="lightbox" data-title="Foto {{ $data->nama_karyawan }}" data-gallery="gallery" data-footer='<a href="" id="linkFotoGuru" class="btn btn-link btn-block btn-light"><i class="nav-icon fas fa-file-upload"></i> &nbsp; Ubah Foto</a>'>
                                 <img src="{{ asset($data->foto) }}" width="130px" class="img-fluid mb-2">
                             </a>
                         </td>
@@ -71,8 +71,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="nama_guru">Nama*</label>
-                        <input type="text" id="nama_guru" name="nama_guru" class="form-control @error('nama_guru') is-invalid @enderror" placeholder="Masukkan Nama">
+                        <label for="nama_karyawan">Nama*</label>
+                        <input type="text" id="nama_karyawan" name="nama_karyawan" class="form-control @error('nama_karyawan') is-invalid @enderror" placeholder="Masukkan Nama">
                     </div>
                     <div class="form-group">
                         <label for="tmp_lahir">Tempat Lahir*</label>
@@ -120,7 +120,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-lg-{{$data->id}}">
+@foreach ($karyawan as $item)
+<div class="modal fade" id="modal-lg-{{$item->id}}">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -132,20 +133,20 @@
         <div class="modal-body">
           <div class="row no-gutters ml-2 mb-2 mr-2">
             <div class="col-md-4">
-                <img src="{{ asset($data->foto) }}" class="card-img img-details" alt="...">
+                <img src="{{ asset($item->foto) }}" class="card-img img-details" alt="...">
             </div>
             <div class="col-md-1 mb-4"></div>
             <div class="col-md-7">
-                <h5 class="card-title card-text mb-2">Nama : {{ $data->nama_guru }}</h5>
-                <h5 class="card-title card-text mb-2">No Kartu ID : {{ $data->id_card }}</h5>
-                @if ($data->jk == 'L')
+                <h5 class="card-title card-text mb-2">Nama : {{ $item->nama_karyawan }}</h5>
+                <h5 class="card-title card-text mb-2">No Kartu ID : {{ $item->id_card }}</h5>
+                @if ($item->jk == 'L')
                     <h5 class="card-title card-text mb-2">Jenis Kelamin : Laki-laki</h5>
                 @else
                     <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
                 @endif
-                <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $data->tmp_lahir }}</h5>
-                <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($data->tgl_lahir)) }}</h5>
-                <h5 class="card-title card-text mb-2">No. Telepon : {{ $data->no_hp }}</h5>
+                <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $item->tmp_lahir }}</h5>
+                <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($item->tgl_lahir)) }}</h5>
+                <h5 class="card-title card-text mb-2">No. Telepon : {{ $item->no_hp }}</h5>
             </div>
         </div>
         </div>
@@ -156,14 +157,17 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+@endforeach
+
 @endsection
+
 @section('script')
     @if (Session::has('success'))
     <script>
     Swal.fire({
         icon: 'success',
         title: 'Berhasil',
-        text: 'Data guru berhasil diditambahkan!!',
+        text: 'Data Karyawan Berhasil ditambahkan!!',
         })
     </script>
     @endif

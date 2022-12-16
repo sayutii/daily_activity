@@ -34,7 +34,7 @@
                                                 <label for="username">Daftar Sebagai</label>
                                                 <select id="role" name="role" class="select2bs4 form-control @error('role') is-invalid @enderror" autocomplete="role">
                                                     <option value="">Pilih Role</option>
-                                                    <option value="Guru">Guru</option>
+                                                    <option value="Karyawan">Karyawan</option>
                                                     <option value="Siswa">Siswa</option>
                                                 </select>
                                                 @error('role')
@@ -139,7 +139,7 @@
     $(document).ready(function(){
         $('#role').change(function(){
             var kel = $('#role option:selected').val();
-            if (kel == "Guru") {
+            if (kel == "Karyawan") {
               $("#noId").addClass("mb-3");
               $("#noId").html(`
               <label for="password-confirm">Kartu ID</label>
@@ -192,7 +192,7 @@
     Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Maaf Anda tidak terdaftar sebagai Guru!',
+        text: 'Maaf Anda tidak terdaftar sebagai Karyawan!',
         })
 </script>  
 @enderror 

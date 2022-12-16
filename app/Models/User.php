@@ -21,7 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_card',
+        'role',
     ];
+
+    public function karyawan($id)
+    {
+        $karyawan = KaryawanModel::where('id_card', $id)->first();
+        return $karyawan;
+    }
 
     /**
      * The attributes that should be hidden for serialization.

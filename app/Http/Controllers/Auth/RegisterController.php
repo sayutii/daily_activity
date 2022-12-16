@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\KaryawanModel;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -49,25 +50,69 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        if ($data['role'] == 'Karyawan') {
+            $guru = KaryawanModel::where('id_card', $data['nomor'])->count();
+            if ($guru >= 1) {
+                $user = User::where('id_card', $data['nomor'])->count();
+                if ($user >= 1) {
+                    return Validator::make($data, [
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                        'password' => ['required', 'string', 'min:8', 'confirmed'],
+                        'role' => ['required'],
+                        'nomor' => ['required'],
+                        'karyawan' => ['required'],
+                    ]);
+                } 
+                else {
+                    return Validator::make($data, [
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                        'password' => ['required', 'string', 'min:8', 'confirmed'],
+                        'role' => ['required'],
+                        'nomor' => ['required'],
+                    ]);
+                }
+            } 
+            else {
+                return Validator::make($data, [
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                    'password' => ['required', 'string', 'min:8', 'confirmed'],
+                    'role' => ['required'],
+                    'nomor' => ['required'],
+                    'id_card' => ['required'],
+                ]);
+            }
+        } else {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'role' => ['required'],
+            ]);
+        }
+        
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if ($data['role'] == 'Karyawan') {
+            $guruId = KaryawanModel::where('id_card', $data['nomor'])->get();
+            foreach ($guruId as $val) {
+                $guru = KaryawanModel::findorfail($val->id);
+            }
+            // dd($data['email']);
+            return User::create([
+                'name' => $guru->nama_karyawan,
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role' => $data['role'],
+                'id_card' => $data['nomor'],
+            ]);
+        }
     }
 }

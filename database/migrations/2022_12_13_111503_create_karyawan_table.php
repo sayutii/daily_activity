@@ -16,7 +16,7 @@ class CreateKaryawanTable extends Migration
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
             $table->string('id_card', 10);
-            $table->string('nama_guru', 50);
+            $table->string('nama_karyawan', 50);
             $table->enum('jk', ['L', 'P']);
             $table->string('no_hp', 15)->nullable();
             $table->string('tmp_lahir', 50)->nullable();
