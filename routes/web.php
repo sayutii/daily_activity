@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/user', [UserController::class, 'actionCreate']);
     });
 
-    Route::middleware(['karyawan'])->group(function ( ) {
+    Route::middleware(['karyawan'])->group(function () {
         Route::get('/kegiatan', [KegiatanController::class, 'index']);
         Route::post('/kegiatan/create', [KegiatanController::class, 'actionCreate'])->name('kegiatan-create');
         Route::get('/aktivitas', [KegiatanController::class, 'actionIndex'])->name('activity-index');

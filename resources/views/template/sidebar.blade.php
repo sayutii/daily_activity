@@ -1,13 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
     <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">AdminLTE 3</span>
   </a>
 
-  <!-- Sidebar -->
   <div class="sidebar">
-    <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         
@@ -49,7 +46,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ url('/karyawan') }}" class="nav-link" id="DataJadwal">
+              <a href="{{ url('/karyawan') }}" class="nav-link" id="DataKaryawan">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Data Karyawan</p>
               </a>
@@ -73,9 +70,6 @@
           </li>
         @endif
       </ul>
-      
     </nav>
-    <!-- /.sidebar-menu -->
   </div>
-  <!-- /.sidebar -->
 </aside>
