@@ -35,7 +35,7 @@
                                                 <select id="role" name="role" class="select2bs4 form-control @error('role') is-invalid @enderror" autocomplete="role">
                                                     <option value="">Pilih Role</option>
                                                     <option value="Karyawan">Karyawan</option>
-                                                    <option value="Siswa">Siswa</option>
+                                                    {{-- <option value="Siswa">Siswa</option> --}}
                                                 </select>
                                                 @error('role')
                                                     <span class="invalid-feedback" role="alert">
@@ -156,24 +156,26 @@
                   </span>
                 @enderror
               `);
-            } else if(kel == "Siswa") {
-              $("#noId").addClass("mb-3");
-              $("#noId").html(`
-              <label for="password-confirm">Nomor Induk Siswa</label>
-                <input id="nomor" type="text" placeholder="No Induk Siswa" class="form-control" name="nomor" autocomplete="nomor">
-                <div class="input-group-append">
-                    <div class="input-group">                                  
-                    </div>
-                </div>
-              `);
-              $("#pesan").html(`
-                @error('nomor')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
-              `);
-            } else {
+            } 
+            // else if(kel == "Siswa") {
+            //   $("#noId").addClass("mb-3");
+            //   $("#noId").html(`
+            //   <label for="password-confirm">Nomor Induk Siswa</label>
+            //     <input id="nomor" type="text" placeholder="No Induk Siswa" class="form-control" name="nomor" autocomplete="nomor">
+            //     <div class="input-group-append">
+            //         <div class="input-group">                                  
+            //         </div>
+            //     </div>
+            //   `);
+            //   $("#pesan").html(`
+            //     @error('nomor')
+            //       <span class="invalid-feedback" role="alert">
+            //         <strong>{{ $message }}</strong>
+            //       </span>
+            //     @enderror
+            //   `);
+            // }
+             else {
               $('#noId').removeClass("mb-3");
               $('#noId').html('');
             }

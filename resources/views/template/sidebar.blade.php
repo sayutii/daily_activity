@@ -57,6 +57,21 @@
           </ul>
         </li>
         @endif
+        @if (Auth::user()->role == 'Karyawan')
+        <li class="nav-header">EXAMPLES</li>
+          <li class="nav-item" id="liAktivitas">
+            <a href="{{ route('activity-index') }}" class="nav-link" id="Aktivitas">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Aktivitas</p>
+            </a>
+          </li>
+          <li class="nav-item" id="liKegiatan">
+            <a href="{{ url('/kegiatan') }}" class="nav-link" id="Kegiatan">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Kegiatan</p>
+            </a>
+          </li>
+        @endif
       </ul>
       
     </nav>

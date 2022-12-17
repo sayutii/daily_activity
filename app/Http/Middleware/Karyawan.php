@@ -16,7 +16,7 @@ class Karyawan
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role != 'Guru') {
+        if ($request->user()->role != 'Karyawan') {
             return redirect('/');
         }
         return $next($request);
