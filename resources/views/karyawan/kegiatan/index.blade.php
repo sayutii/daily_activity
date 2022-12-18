@@ -4,7 +4,7 @@
   <li class="breadcrumb-item active">Data Kegiatan</li>
 @endsection
 @section('content')
-
+    {{-- {{dd(Auth::user()->id)}} --}}
     <div class="col-md-12">
         <div class="card card-primary card-outline">
             <div class="card-header">
@@ -52,6 +52,7 @@
                                         <label class="custom-file-label" for="gambar">Choose file</label>
                                     </div>
                                 </div>
+                                <input name="id_user" type="hidden" value="{{ Auth::user()->id }}">
                             </div>
                         </div>
                     </div>

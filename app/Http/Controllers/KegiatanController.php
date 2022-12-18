@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KegiatanModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class KegiatanController extends Controller
@@ -36,13 +37,7 @@ class KegiatanController extends Controller
             $gambar->move('uploads/kegiatan/', $new_gambar);
             $nameGambar = 'uploads/kegiatan/' . $new_gambar;
         } 
-        // else {
-        //     if ($request->jenis_kegiatan == 'Test') {
-        //         $nameGambar = 'uploads/kegiatan/35251431012020_male.jpg';
-        //     } else {
-        //         $nameGambar = 'uploads/kegiatan/23171022042020_female.jpg';
-        //     }
-        // }
+        
         try {   
             $data_save=$fields;
             if($data_save){
@@ -52,12 +47,14 @@ class KegiatanController extends Controller
                     'waktu' => $request->waktu,
                     'tanggal' => $request->tanggal,
                     'keterangan' => $request->keterangan,
-                    'gambar' => $nameGambar
+                    'gambar' => $nameGambar,
+                    'id_user' => $request->id_user
                 ]);  
                 $is_save=0;
                 if($model){
                     $is_save=1;
                 }   
+
                 if($is_save){
                     DB::commit();
                     return redirect()->route($link_back)->with(['success' => $message_default['success']]);
@@ -81,9 +78,9 @@ class KegiatanController extends Controller
         }
     }
 
-    public function actionIndex()
+    public function actionIndex(Request $request)
     {
-        $kegiatan = KegiatanModel::get();
+        $kegiatan = KegiatanModel::where('id_user', Auth::user()->id)->get();
         $parameter_view = [ 
             'kegiatan'=>$kegiatan
         ];

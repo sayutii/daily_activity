@@ -21,6 +21,9 @@ class CreateKegiatanTable extends Migration
             $table->date('tanggal');
             $table->string('gambar');
             $table->string('keterangan');
+            $table->bigInteger('id_user')->unsigned();
+
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
