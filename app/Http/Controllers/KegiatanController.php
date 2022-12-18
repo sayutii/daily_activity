@@ -17,7 +17,8 @@ class KegiatanController extends Controller
     public function actionCreate(Request $request)
     {
         $fields = $request->all();
-        $link_back='karyawan-index';
+        $link_back='activity-index';
+        $link_back_param = ['start' => date('Y-m-d')];
         DB::beginTransaction();
         $message_default=[
             'success'=>'Berhasil menambahkan data Karyawan baru!',
@@ -57,30 +58,32 @@ class KegiatanController extends Controller
 
                 if($is_save){
                     DB::commit();
-                    return redirect()->route($link_back)->with(['success' => $message_default['success']]);
+                    return redirect()->route($link_back, $link_back_param)->with(['success' => $message_default['success']]);
                 }else{
                     DB::rollBack();
-                    return redirect()->route($link_back)->with(['error' => $message_default['error']]);
+                    return redirect()->route($link_back, $link_back_param)->with(['error' => $message_default['error']]);
                 }
             }else{
-                return redirect()->route($link_back)->with(['error' => $message_default['error']]);
+                return redirect()->route($link_back, $link_back_param)->with(['error' => $message_default['error']]);
             }
         } catch(\Illuminate\Database\QueryException $e){
             DB::rollBack();
             if($e->errorInfo[1] == '1062'){
-                return redirect()->route($link_back)->with(['error' => 'Maaf tidak dapat menyimpan data yang sama']);
+                return redirect()->route($link_back, $link_back_param)->with(['error' => 'Maaf tidak dapat menyimpan data yang sama']);
             }
-            return redirect()->route($link_back)->with(['error' => $message_default['error']]);
+            return redirect()->route($link_back, $link_back_param)->with(['error' => $message_default['error']]);
 
         } catch (\Throwable $e) {
             DB::rollBack();
-            return redirect()->route($link_back)->with(['error' => $message_default['error']]);
+            return redirect()->route($link_back, $link_back_param)->with(['error' => $message_default['error']]);
         }
     }
 
     public function actionIndex(Request $request)
     {
-        $kegiatan = KegiatanModel::where('id_user', Auth::user()->id)->get();
+        $user = Auth::user()->id;
+        $tanggal = $request->start;
+        $kegiatan = KegiatanModel::where('id_user', '=', $user)->where('tanggal', '=', $tanggal)->get();
         $parameter_view = [ 
             'kegiatan'=>$kegiatan
         ];

@@ -57,7 +57,7 @@
         @if (Auth::user()->role == 'Karyawan')
         <li class="nav-header">EXAMPLES</li>
           <li class="nav-item" id="liAktivitas">
-            <a href="{{ route('activity-index') }}" class="nav-link" id="Aktivitas">
+            <a href="{{ url('/') }}/aktivitas?start={{ date('Y-m-d') }}" class="nav-link" id="Aktivitas">
               <i class="nav-icon fas fa-book"></i>
               <p>Aktivitas</p>
             </a>
