@@ -33,12 +33,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/karyawan/edit/{id}', [KaryawanController::class, 'actionFormUpdate'])->name('edit-form');
         Route::patch('/karyawan/update/{id}', [KaryawanController::class, 'actionUpdate'])->name('action-update');
         Route::delete('/karyawan/delete/{id}', [KaryawanController::class, 'actionDelete'])->name('action-delete');
-        Route::post('/user', [UserController::class, 'actionCreate']);
     });
 
     Route::middleware(['karyawan'])->group(function () {
         Route::get('/kegiatan', [KegiatanController::class, 'index']);
         Route::post('/kegiatan/create', [KegiatanController::class, 'actionCreate'])->name('kegiatan-create');
         Route::get('/aktivitas', [KegiatanController::class, 'actionIndex'])->name('activity-index');
+        Route::post('/aktivitas/update/{id}', [KegiatanController::class, 'actionUpdate'])->name('action-update');
+        Route::delete('/aktivitas/delete/{id}', [KegiatanController::class, 'actionDelete'])->name('action-delete');
     });
 });
