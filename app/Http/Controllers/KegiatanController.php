@@ -25,10 +25,11 @@ class KegiatanController extends Controller
             'error'=>'Maaf Gagal menambahkan data Karyawan baru!, mungkin anda kurang ngopii'
         ];
         $this->validate($request, [
-            'judul' => 'required',
+            'nama_kegiatan' => 'required',
             'jenis_kegiatan' => 'required',
-            'waktu' => 'required',
-            'tanggal' => 'required',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'tanggal_kegiatan' => 'required',
             'keterangan' => 'required'
         ]);
 
@@ -43,10 +44,11 @@ class KegiatanController extends Controller
             $data_save=$fields;
             if($data_save){
                 $model = KegiatanModel::create([
-                    'judul' => $request->judul,
+                    'nama_kegiatan' => $request->nama_kegiatan,
                     'jenis_kegiatan' => $request->jenis_kegiatan,
-                    'waktu' => $request->waktu,
-                    'tanggal' => $request->tanggal,
+                    'waktu_mulai' => $request->waktu_mulai,
+                    'waktu_selesai' => $request->waktu_selesai,
+                    'tanggal_kegiatan' => $request->tanggal_kegiatan,
                     'keterangan' => $request->keterangan,
                     'gambar' => $nameGambar,
                     'id_user' => $request->id_user
@@ -83,7 +85,7 @@ class KegiatanController extends Controller
     {
         $user = Auth::user()->id;
         $tanggal = $request->start;
-        $kegiatan = KegiatanModel::where('id_user', '=', $user)->where('tanggal', '=', $tanggal)->get();
+        $kegiatan = KegiatanModel::where('id_user', '=', $user)->where('tanggal_kegiatan', '=', $tanggal)->get();
         $parameter_view = [ 
             'kegiatan'=>$kegiatan
         ];
@@ -101,7 +103,9 @@ class KegiatanController extends Controller
             'error'=>'Maaf Gagal memperbarui data Karyawan baru!, mungkin anda kurang ngopii'
         ];
         $this->validate($request, [
-            'judul' => 'required',
+            'nama_kegiatan' => 'required',
+            'jenis_kegiatan' => 'required',
+            'tanggal_kegiatan' => 'required',
             'keterangan' => 'required',
         ]);
 
@@ -110,10 +114,11 @@ class KegiatanController extends Controller
             if($data_save){
                 $model = KegiatanModel::findorfail($data_save);  
                     $data_kegiatan = [
-                        'judul' => $request->judul,
+                        'nama_kegiatan' => $request->nama_kegiatan,
                         'jenis_kegiatan' => $request->jenis_kegiatan,
-                        'waktu' => $request->waktu,
-                        'tanggal' => $request->tanggal,
+                        'waktu_mulai' => $request->waktu_mulai,
+                        'waktu_selesai' => $request->waktu_selesai,
+                        'tanggal_kegiatan' => $request->tanggal_kegiatan,
                         'keterangan' => $request->keterangan,
                         'id_user' => $request->id_user,
                     ];

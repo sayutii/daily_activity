@@ -18,7 +18,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Judul</th>
+                                <th>Nama Kegiatan</th>
                                 <th>Jenis Kegiatan</th>
                                 <th>Tanggal</th>
                                 <th>Gambar</th>
@@ -30,9 +30,9 @@
                             @foreach ($kegiatan as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $data->judul }}</td>
+                                <td>{{ $data->nama_kegiatan }}</td>
                                 <td>{{ $data->jenis_kegiatan }}</td>
-                                <td>{{ $data->tanggal }}</td>
+                                <td>{{ $data->tanggal_kegiatan }}</td>
                                 <td>
                                     <a href="{{ asset($data->gambar) }}" data-toggle="lightbox" data-title="Foto {{ $data->judul }}" data-gallery="gallery" data-footer='<a href="" id="linkFotoGuru" class="btn btn-link btn-block btn-light"><i class="nav-icon fas fa-file-upload"></i> &nbsp; Ubah Foto</a>'>
                                         <img src="{{ asset($data->gambar) }}" width="130px" class="img-fluid mb-2">
@@ -72,32 +72,40 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="judul">Judul <span class="text-danger">*</span></label>
-                        <input type="text" id="judul" name="judul" class="form-control @error('judul') is-invalid @enderror" value="{{ !empty($item->judul) ? $item->judul : '' }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="jenis_kegiatan">Jenis Kegiatan <span class="text-danger">*</span></label>
-                        <select id="jenis_kegiatan" name="jenis_kegiatan" class="select2bs4 form-control @error('jenis_kegiatan') is-invalid @enderror">
-                            <option value="">Pilih Jenis Kegiatan</option>
-                            <option value="L">Test</option>
-                            <option value="P">Test</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggal">Tanggal <span class="text-danger">*</span></label>
-                        <input type="date" id="tanggal" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ !empty($item->tanggal) ? $item->tanggal : '' }}">
+                        <label for="nama_kegiatan">Nama Kegiatan <span class="text-danger">*</span></label>
+                        <input type="text" id="nama_kegiatan" name="nama_kegiatan" class="form-control @error('nama_kegiatan') is-invalid @enderror" value="{{ !empty($item->nama_kegiatan) ? $item->nama_kegiatan : '' }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="waktu">Waktu <span class="text-danger">*</span></label>
-                        <input type="time" id="waktu" name="waktu" class="form-control @error('waktu') is-invalid @enderror" value="{{ !empty($item->waktu) ? $item->waktu : '' }}">
+                        <label for="jenis_kegiatan">Jenis Kegiatan <span class="text-danger">*</span></label>
+                        <input type="text" id="jenis_kegiatan" name="jenis_kegiatan" class="form-control @error('jenis_kegiatan') is-invalid @enderror" pvalue="{{ !empty($item->jenis_kegiatan) ? $item->jenis_kegiatan : '' }}">
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="tanggal_kegiatan">Tanggal <span class="text-danger">*</span></label>
+                        <input type="date" id="tanggal_kegiatan" name="tanggal_kegiatan" class="form-control @error('tanggal_kegiatan') is-invalid @enderror" value="{{ !empty($item->tanggal_kegiatan) ? $item->tanggal_kegiatan : '' }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="waktu_mulai">Waktu Mulai <span class="text-danger">*</span></label>
+                        <input type="time" id="waktu_mulai" name="waktu_mulai" class="form-control @error('waktu_mulai') is-invalid @enderror" value="{{ !empty($item->waktu_mulai) ? $item->waktu_mulai : '' }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="waktu_mulai">Waktu Selesai <span class="text-danger">*</span></label>
+                        <input type="time" id="waktu_selesai" name="waktu_selesai" class="form-control @error('waktu_selesai') is-invalid @enderror" value="{{ !empty($item->waktu_selesai) ? $item->waktu_selesai : '' }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
                         <input type="text" id="keterangan" name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" value="{{ !empty($item->keterangan) ? $item->keterangan : '' }}">
                     </div>
-                        <input name="id_user" type="hidden" value="{{ Auth::user()->id }}">
+                    <input name="id_user" type="hidden" value="{{ Auth::user()->id }}">
                 </div>
             </div>
           </div>

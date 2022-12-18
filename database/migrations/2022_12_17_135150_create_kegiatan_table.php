@@ -15,12 +15,13 @@ class CreateKegiatanTable extends Migration
     {
         Schema::create('kegiatan', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('jenis_kegiatan');
-            $table->time('waktu');
-            $table->date('tanggal');
+            $table->string('nama_kegiatan')->nullable();
+            $table->string('jenis_kegiatan')->nullable();
+            $table->time('waktu_mulai')->nullable();
+            $table->time('waktu_selesai')->nullable();
+            $table->date('tanggal_kegiatan')->nullable();
             $table->string('gambar');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->bigInteger('id_user')->unsigned();
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

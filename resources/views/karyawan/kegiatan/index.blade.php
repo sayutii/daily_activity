@@ -19,31 +19,35 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="judul">Judul <span class="text-danger">*</span></label>
-                                <input type="text" id="judul" name="judul" class="form-control @error('judul') is-invalid @enderror" placeholder="Masukkan Judul">
-                            </div>
-                            <div class="form-group">
-                                <label for="jenis_kegiatan">Jenis Kegiatan <span class="text-danger">*</span></label>
-                                <select id="jenis_kegiatan" name="jenis_kegiatan" class="select2bs4 form-control @error('jenis_kegiatan') is-invalid @enderror">
-                                    <option value="">Pilih Jenis Kegiatan</option>
-                                    <option value="L">Test</option>
-                                    <option value="P">Test</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggal">Tanggal <span class="text-danger">*</span></label>
-                                <input type="date" id="tanggal" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror">
+                                <label for="nama_kegiatan">Nama Kegiatan <span class="text-danger">*</span></label>
+                                <input type="text" id="nama_kegiatan" name="nama_kegiatan" class="form-control @error('nama_kegiatan') is-invalid @enderror" placeholder="Masukkan Nama Kegiatan">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="waktu">Waktu <span class="text-danger">*</span></label>
-                                <input type="time" id="waktu" name="waktu" class="form-control @error('waktu') is-invalid @enderror">
+                                <label for="jenis_kegiatan">Jenis Kegiatan <span class="text-danger">*</span></label>
+                                <input type="text" id="jenis_kegiatan" name="jenis_kegiatan" class="form-control @error('jenis_kegiatan') is-invalid @enderror" placeholder="Masukkan Jenis kegiatan">
                             </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
-                                <input type="text" id="keterangan" name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan">
+                                <label for="tanggal_kegiatan">Tanggal <span class="text-danger">*</span></label>
+                                <input type="date" id="tanggal_kegiatan" name="tanggal_kegiatan" class="form-control @error('tanggal_kegiatan') is-invalid @enderror">
                             </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="waktu_mulai">Waktu Mulai <span class="text-danger">*</span></label>
+                                <input type="time" id="waktu_mulai" name="waktu_mulai" class="form-control @error('waktu_mulai') is-invalid @enderror">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="waktu_mulai">Waktu Selesai <span class="text-danger">*</span></label>
+                                <input type="time" id="waktu_selesai" name="waktu_selesai" class="form-control @error('waktu_selesai') is-invalid @enderror">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="foto">Gambar</label>
                                 <div class="input-group">
@@ -52,10 +56,15 @@
                                         <label class="custom-file-label" for="gambar">Choose file</label>
                                     </div>
                                 </div>
-                                <input name="id_user" type="hidden" value="{{ Auth::user()->id }}">
                             </div>
                         </div>
-                    </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
+                                <input type="text" id="keterangan" name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" placeholder="Masukkan Keterangan">
+                            </div>
+                            <input name="id_user" type="hidden" value="{{ Auth::user()->id }}">
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
