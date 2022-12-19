@@ -24,15 +24,10 @@
                 <th>Username</th>
                 <th>Email</th>
                 @foreach ($role as $d => $data)
-                  @if ($d == 'Guru')
+                  @if ($d == 'Karyawan')
                     <th>No Id Card</th>
-                  @elseif ($d == 'Siswa')
-                    <th>No Induk Siswa</th>
-                  @else
-                      
                   @endif
                 @endforeach
-                {{-- <th>Tanggal Register</th> --}}
                 <th>Aksi</th>
             </tr>
         </thead>
