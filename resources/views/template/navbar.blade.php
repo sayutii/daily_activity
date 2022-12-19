@@ -1,19 +1,14 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-  <!-- Left navbar links -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #0f4c81;">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      <a class="nav-link" style="color: #fff;" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
         <div class="btn-group" role="group">
-            {{-- <a id="btnGroupDrop1" style="color: rgb(0, 0, 0); margin-right: 40px;" type="button" class="dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="nav-icon fas fa-user-circle"></i> &nbsp; {{ Auth::user()->name }}
-            </a> --}}
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-user-circle"></i>
-              {{-- <span class="badge badge-warning navbar-badge">15</span> --}}
+            <a id="btnGroupDrop1" style="color: #fff; margin-right: 40px;" type="button" class="dropdown-toggle text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="nav-icon fas fa-user-circle"></i> &nbsp; {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               <span class="dropdown-item dropdown-header">{{ Auth::user()->name }}</span>
@@ -34,5 +29,5 @@
           </div>
         </div>
     </li>
-</ul>
+  </ul>
 </nav>

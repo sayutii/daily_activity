@@ -1,7 +1,7 @@
 @extends('template.master')
-@section('heading', 'Data Kegiatan')
+@section('heading', 'Data Aktivitas')
 @section('page')
-  <li class="breadcrumb-item active">Data Kegiatan</li>
+  <li class="breadcrumb-item active">Data Aktivitas</li>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -56,12 +56,13 @@
         </div>
     </div>
 </div>
+
 @foreach ($kegiatan as $item)
 <div class="modal fade bd-example-modal-lg" id="modal-lg-{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
       <div class="modal-header">
-          <h4 class="modal-title">Tambah Data Karyawan</h4>
+          <h4 class="modal-title">Edit Kegiatan</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -79,7 +80,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="jenis_kegiatan">Jenis Kegiatan <span class="text-danger">*</span></label>
-                        <input type="text" id="jenis_kegiatan" name="jenis_kegiatan" class="form-control @error('jenis_kegiatan') is-invalid @enderror" pvalue="{{ !empty($item->jenis_kegiatan) ? $item->jenis_kegiatan : '' }}">
+                        <input type="text" id="jenis_kegiatan" name="jenis_kegiatan" class="form-control @error('jenis_kegiatan') is-invalid @enderror" value="{{ !empty($item->jenis_kegiatan) ? $item->jenis_kegiatan : '' }}">
                     </div>
                 </div>
                 <div class="col-md-4">

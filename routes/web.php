@@ -33,6 +33,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/karyawan/edit/{id}', [KaryawanController::class, 'actionFormUpdate'])->name('edit-form');
         Route::patch('/karyawan/update/{id}', [KaryawanController::class, 'actionUpdate'])->name('action-update');
         Route::delete('/karyawan/delete/{id}', [KaryawanController::class, 'actionDelete'])->name('action-delete');
+        
+        Route::get('/user', [UserController::class, 'index'])->name('user-index');
+        Route::post('/user/create', [UserController::class, 'actionCreate'])->name('action-create');
+        Route::get('/user/view/{id}', [UserController::class, 'actionView'])->name('action-view');
+        Route::delete('/user/delete/{id}', [UserController::class, 'actionDelete'])->name('user-delete');
     });
 
     Route::middleware(['karyawan'])->group(function () {

@@ -26,7 +26,7 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">User</span>
+                <span class="info-box-text">User Registration</span>
                 <span class="info-box-number">{{ $user }}</span>
               </div>
               <!-- /.info-box-content -->
@@ -36,9 +36,9 @@
 @endsection
 
 @section('script')
-          <script>
-            $("#Dashboard").addClass("active");
-            $("#liDashboard").addClass("menu-open");
-            $("#AdminHome").addClass("active");
-          </script>
+      <script>
+        $("#Dashboard").addClass("active");
+        $("#liDashboard").addClass("menu-open");
+        $("#AdminHome").addClass("active");
+      </script>
 @endsection

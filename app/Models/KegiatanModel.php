@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KegiatanModel extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama_kegiatan', 'jenis_kegiatan', 'waktu_,mulai', 'waktu_selesai', 'tanggal_kegiatan', 'gambar', 'keterangan', 'id_user'];
+    protected $fillable = ['nama_kegiatan', 'jenis_kegiatan', 'waktu_mulai', 'waktu_selesai', 'tanggal_kegiatan', 'gambar', 'keterangan', 'id_user'];
     protected $table = 'kegiatan';
     public $timestamps = false;
 

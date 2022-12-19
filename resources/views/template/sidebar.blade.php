@@ -51,6 +51,12 @@
                 <p>Data Karyawan</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url('/user') }}" class="nav-link" id="DataUser">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data User</p>
+              </a>
+          </li>
           </ul>
         </li>
         @endif

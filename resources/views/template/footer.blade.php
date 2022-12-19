@@ -32,6 +32,8 @@
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 
 <!-- DataTables -->
 <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
@@ -48,6 +50,13 @@
   });
 
 $(function () {
+      $('.select2').select2()
+
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+      theme: 'bootstrap4'
+      })
+
       $("#example1").DataTable();
       $('#example2').DataTable({
           "paging": false,
