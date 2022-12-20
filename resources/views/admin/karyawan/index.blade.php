@@ -39,11 +39,12 @@
                             </a>
                         </td>
                         <td>
-                          <a href="{{ route('edit-form', $data->id) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
-                          <button class="btn btn-danger btn-sm mt-2 swal-confirm" data-id="{{ $data->id }}"><i class="nav-icon fas fa-trash-alt"></i></button>
-                            <form action="{{ route('action-delete', $data->id) }}" id="delete{{ $data->id }}" method="post">
+                            <a href="{{ route('edit-form', $data->id) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i></a>
+                            <button class="btn btn-danger btn-sm mt-2 swal-confirm" data-id="{{ $data->id }}"><i class="nav-icon fas fa-trash-alt"></i>
+                            <form action="{{ url('/karyawan/delete', $data->id) }}" id="delete{{ $data->id }}" method="post">
                             @csrf
                             @method('delete')
+                            </button>
                                 <a href="" data-toggle="modal" data-target="#modal-lg-{{$data->id}}" class="btn btn-primary btn-sm mt-2"><i class="nav-icon fas fa-eye"></i></a>
                             </form>
                         </td>

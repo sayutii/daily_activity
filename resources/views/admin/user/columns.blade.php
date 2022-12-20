@@ -42,10 +42,11 @@
                     <td>{{ $data->id_card }}</td>
                   @endif
                 <td>
-                  <button class="btn btn-danger btn-sm mt-2 swal-confirm" data-id="{{ $data->id }}"><i class="nav-icon fas fa-trash-alt"></i></button>
+                  <button class="btn btn-danger btn-sm mt-2 swal-confirm" data-id="{{ $data->id }}"><i class="nav-icon fas fa-trash-alt"></i>
                   <form action="{{ route('user-delete', $data->id) }}" id="delete{{ $data->id }}" method="POST">
                     @csrf
                     @method('delete')
+                  </button>
                   </form>
                 </td>
               </tr>
